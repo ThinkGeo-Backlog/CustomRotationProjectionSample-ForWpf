@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using ThinkGeo.MapSuite.Core;
+using ThinkGeo.MapSuite.Layers;
+using ThinkGeo.MapSuite.Shapes;
 
 namespace Projections
 {
     //This projection class allows to project and rotate at the same time.
     class CustomRotationProjection : Projection, IDisposable
     {
-        private ManagedProj4Projection proj4 = new ManagedProj4Projection();
+        private Proj4Projection proj4 = new Proj4Projection();
         private RotationProjection rotateProjection = new RotationProjection();
         private double angle;
         private Vertex pivotVertex; 

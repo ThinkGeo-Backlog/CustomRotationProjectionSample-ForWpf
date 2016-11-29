@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Collections.ObjectModel;
-using ThinkGeo.MapSuite.Core;
-using ThinkGeo.MapSuite.WpfDesktopEdition;
-
+using ThinkGeo.MapSuite;
+using ThinkGeo.MapSuite.Drawing;
+using ThinkGeo.MapSuite.Layers;
+using ThinkGeo.MapSuite.Shapes;
+using ThinkGeo.MapSuite.Styles;
+using ThinkGeo.MapSuite.Wpf;
 
 namespace CustomRotationProjection
 {
@@ -24,7 +17,7 @@ namespace CustomRotationProjection
     public partial class TestWindow : Window
     {
         private Projections.CustomRotationProjection customRotationProjection;
-        
+
         public TestWindow()
         {
             InitializeComponent();
@@ -34,18 +27,17 @@ namespace CustomRotationProjection
         {
             //Sets the correct map unit and the extent of the map.
             wpfMap1.MapUnit = GeographyUnit.Meter;
-            wpfMap1.CurrentExtent = new RectangleShape(-10782920,3912077,-10779783,3910188);
+            wpfMap1.CurrentExtent = new RectangleShape(-10782920, 3912077, -10779783, 3910188);
             wpfMap1.Background = new SolidColorBrush(Color.FromRgb(148, 196, 243));
 
             GoogleMapsOverlay googleMapsOverlay = new GoogleMapsOverlay();
             wpfMap1.Overlays.Add(googleMapsOverlay);
 
             //Custom projection that will allow to project from State Plane Central North Texas to Spherical Mercator while applying a rotation.
-            customRotationProjection = new Projections.CustomRotationProjection(ManagedProj4Projection.GetEsriParametersString(102738),
-                ManagedProj4Projection.GetGoogleMapParametersString());
-            
+            customRotationProjection = new Projections.CustomRotationProjection(Proj4Projection.GetEsriParametersString(102738),
+                Proj4Projection.GetGoogleMapParametersString());
+
             ShapeFileFeatureLayer streetLayer = new ShapeFileFeatureLayer(@"../../data/Streets_subset.shp");
-            streetLayer.DrawingMarginPercentage = 100;
             streetLayer.FeatureSource.Projection = customRotationProjection;
             streetLayer.ZoomLevelSet.ZoomLevel01.DefaultLineStyle = LineStyles.CreateSimpleLineStyle
                 (GeoColor.StandardColors.Red, 3, GeoColor.FromArgb(255, GeoColor.StandardColors.Black), 5, true);
@@ -61,7 +53,7 @@ namespace CustomRotationProjection
             streetLayer.Close();
 
             customRotationProjection.Angle = 20;
-          
+
             wpfMap1.Refresh();
         }
 
@@ -91,18 +83,18 @@ namespace CustomRotationProjection
             wpfMap1.Refresh(streetLayerOverlay);
         }
 
-       
+
         private void wpfMap1_MouseMove(object sender, MouseEventArgs e)
         {
             //Gets the PointShape in world coordinates from screen coordinates.
             Point point = e.MouseDevice.GetPosition(null);
-            
+
             ScreenPointF screenPointF = new ScreenPointF((float)point.X, (float)point.Y);
             PointShape pointShape = ExtentHelper.ToWorldCoordinate(wpfMap1.CurrentExtent, screenPointF, (float)wpfMap1.Width, (float)wpfMap1.Height);
 
             textBox1.Text = "X: " + Math.Round(pointShape.X) +
                           "  Y: " + Math.Round(pointShape.Y);
 
-           }
-      }
+        }
+    }
 }
