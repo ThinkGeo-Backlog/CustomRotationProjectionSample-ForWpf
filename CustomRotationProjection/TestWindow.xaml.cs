@@ -27,34 +27,34 @@ namespace CustomRotationProjection
         {
             //Sets the correct map unit and the extent of the map.
             wpfMap1.MapUnit = GeographyUnit.Meter;
-            wpfMap1.CurrentExtent = new RectangleShape(-10782920, 3912077, -10779783, 3910188);
+            wpfMap1.CurrentExtent = new RectangleShape(-13086298.60, 7339062.72, -8111177.75, 2853137.62);
             wpfMap1.Background = new SolidColorBrush(Color.FromRgb(148, 196, 243));
 
             GoogleMapsOverlay googleMapsOverlay = new GoogleMapsOverlay();
             wpfMap1.Overlays.Add(googleMapsOverlay);
 
-            //Custom projection that will allow to project from State Plane Central North Texas to Spherical Mercator while applying a rotation.
-            customRotationProjection = new Projections.CustomRotationProjection(Proj4Projection.GetEsriParametersString(102738),
-                Proj4Projection.GetGoogleMapParametersString());
+            ////Custom projection that will allow to project from State Plane Central North Texas to Spherical Mercator while applying a rotation.
+            //customRotationProjection = new Projections.CustomRotationProjection(Proj4Projection.GetEsriParametersString(102738),
+            //    Proj4Projection.GetGoogleMapParametersString());
 
-            ShapeFileFeatureLayer streetLayer = new ShapeFileFeatureLayer(@"../../data/Streets_subset.shp");
-            streetLayer.FeatureSource.Projection = customRotationProjection;
-            streetLayer.ZoomLevelSet.ZoomLevel01.DefaultLineStyle = LineStyles.CreateSimpleLineStyle
-                (GeoColor.StandardColors.Red, 3, GeoColor.FromArgb(255, GeoColor.StandardColors.Black), 5, true);
-            streetLayer.ZoomLevelSet.ZoomLevel01.ApplyUntilZoomLevel = ApplyUntilZoomLevel.Level20;
+            //ShapeFileFeatureLayer streetLayer = new ShapeFileFeatureLayer(@"../../data/Streets_subset.shp");
+            //streetLayer.FeatureSource.Projection = customRotationProjection;
+            //streetLayer.ZoomLevelSet.ZoomLevel01.DefaultLineStyle = LineStyles.CreateSimpleLineStyle
+            //    (GeoColor.StandardColors.Red, 3, GeoColor.FromArgb(255, GeoColor.StandardColors.Black), 5, true);
+            //streetLayer.ZoomLevelSet.ZoomLevel01.ApplyUntilZoomLevel = ApplyUntilZoomLevel.Level20;
 
-            LayerOverlay layerOverlay = new LayerOverlay();
-            layerOverlay.Layers.Add("StreetLayer", streetLayer);
-            wpfMap1.Overlays.Add("StreetOverlay", layerOverlay);
+            //LayerOverlay layerOverlay = new LayerOverlay();
+            //layerOverlay.Layers.Add("StreetLayer", streetLayer);
+            //wpfMap1.Overlays.Add("StreetOverlay", layerOverlay);
 
-            //Sets the pivot point to be the center of the layer.
-            streetLayer.Open();
-            customRotationProjection.PivotVertex = new Vertex(streetLayer.GetBoundingBox().GetCenterPoint());
-            streetLayer.Close();
+            ////Sets the pivot point to be the center of the layer.
+            //streetLayer.Open();
+            //customRotationProjection.PivotVertex = new Vertex(streetLayer.GetBoundingBox().GetCenterPoint());
+            //streetLayer.Close();
 
-            customRotationProjection.Angle = 20;
+            //customRotationProjection.Angle = 20;
 
-            wpfMap1.Refresh();
+            //wpfMap1.Refresh();
         }
 
         private void btnRotateClockWise_Click(object sender, RoutedEventArgs e)
