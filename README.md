@@ -2,7 +2,7 @@
 
 ### Description
 
-This projects show how to create your own projection class that allows projecting a layer from any internal projection to any external projection, while doing a rotation at the same time. 
+This project shows how to create your own projection class that allows projecting a layer from any internal projection to any external projection, while doing a rotation at the same time. 
 
 Having the capability to apply those two operations in one step may come in handy if the original layer was created in a different projection with the north at a different angle that you want to align it on the base map. 
 
