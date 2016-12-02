@@ -2,7 +2,7 @@
 
 ### Description
 
-In today’s project, we show how to create your own projection class that allows projecting a layer from any internal projection to any external while doing a rotation at the same time. Having the capability to apply those two operations in one step may come handy if the original layer was created in a different projection with the north at an angle and you want to align it on the base map. This is a Wpf project and you will need references to MapSuiteCore.dll and WpfDesktopEdition.dll to run it.
+This projects show how to create your own projection class that allows projecting a layer from any internal projection to any external projection, while doing a rotation at the same time. Having the capability to apply those two operations in one step may come in handy if the original layer was created in a different projection with the north at a different angle that you want to align it on the base map. This is a Wpf project and you will need references to MapSuiteCore.dll and WpfDesktopEdition.dll to run it.
               
 ![Screenshot](https://github.com/ThinkGeo/CustomRotationProjectionSample-ForWpf/blob/master/ScreenShot.png)
 
@@ -22,7 +22,7 @@ Working...
 
 [Map Suite Wpf Product Description](http://thinkgeo.com/map-suite-developer-gis/wpf-edition/)
 
-[ThinkGeo Community Site](http://community.thinkgeo.com/)
+[ThinkGeo Community Site](http://community.thinkgeo.com/c/map-suite-wpf-desktop-edition-support)
 
 [ThinkGeo Web Site](http://www.thinkgeo.com)
 
