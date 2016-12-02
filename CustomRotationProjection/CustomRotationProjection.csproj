@@ -85,6 +85,18 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="ThinkGeo.MapSuite, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ThinkGeo.MapSuite.10.0.334.3\lib\net40\ThinkGeo.MapSuite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ThinkGeo.MapSuite.Layers.ShapeFile, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ThinkGeo.MapSuite.Layers.ShapeFile.10.0.334.3\lib\net40\ThinkGeo.MapSuite.Layers.ShapeFile.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ThinkGeo.MapSuite.Wpf, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MapSuiteDesktopForWpf-BareBone.10.0.334.3\lib\net40\ThinkGeo.MapSuite.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -152,20 +164,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\SourceCode\MapSuite10.0\MapSuite\MapSuite\Layers\ShapeFile\ShapeFile-WLM\ShapeFile-WLM.csproj">
-      <Project>{632e23dd-f9e0-4a73-86f9-862680b18484}</Project>
-      <Name>ShapeFile-WLM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\SourceCode\MapSuite10.0\MapSuite\MapSuite\MapSuite\MapSuiteSDK-WLM\MapSuiteSDK-WLM.csproj">
-      <Project>{bc3c1d57-2df4-4945-b8ee-d0fee11dd0fa}</Project>
-      <Name>MapSuiteSDK-WLM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\SourceCode\MapSuite10.0\MapSuite\Wpf\WpfSDK-Windows\WpfSDK-Windows.csproj">
-      <Project>{35bfc330-e3c8-445a-afe7-6eaa4d76ae36}</Project>
-      <Name>WpfSDK-Windows</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
