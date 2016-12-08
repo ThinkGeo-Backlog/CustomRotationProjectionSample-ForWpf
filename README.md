@@ -1,4 +1,4 @@
-# #  Custom Rotation Projection Sample  for Wpf
+# Custom Rotation Projection Sample for Wpf
 
 ### Description
 
