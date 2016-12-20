@@ -6,8 +6,6 @@ This project shows how to create your own projection class that allows projectin
 
 Having the capability to apply those two operations in one step may come in handy if the original layer was created in a different projection with the north at a different angle that you want to align it on the base map. 
 
-This is a Wpf project and you will need references to MapSuiteCore.dll and WpfDesktopEdition.dll to run it.
-              
 ![Screenshot](https://github.com/ThinkGeo/CustomRotationProjectionSample-ForWpf/blob/master/ScreenShot.png)
 
 ### Requirements
