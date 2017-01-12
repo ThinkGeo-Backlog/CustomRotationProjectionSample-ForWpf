@@ -33,28 +33,28 @@ namespace CustomRotationProjection
             GoogleMapsOverlay googleMapsOverlay = new GoogleMapsOverlay();
             wpfMap1.Overlays.Add(googleMapsOverlay);
 
-            ////Custom projection that will allow to project from State Plane Central North Texas to Spherical Mercator while applying a rotation.
-            //customRotationProjection = new Projections.CustomRotationProjection(Proj4Projection.GetEsriParametersString(102738),
-            //    Proj4Projection.GetGoogleMapParametersString());
+            //Custom projection that will allow to project from State Plane Central North Texas to Spherical Mercator while applying a rotation.
+            customRotationProjection = new Projections.CustomRotationProjection(Proj4Projection.GetEsriParametersString(102738),
+                Proj4Projection.GetGoogleMapParametersString());
 
-            //ShapeFileFeatureLayer streetLayer = new ShapeFileFeatureLayer(@"../../data/Streets_subset.shp");
-            //streetLayer.FeatureSource.Projection = customRotationProjection;
-            //streetLayer.ZoomLevelSet.ZoomLevel01.DefaultLineStyle = LineStyles.CreateSimpleLineStyle
-            //    (GeoColor.StandardColors.Red, 3, GeoColor.FromArgb(255, GeoColor.StandardColors.Black), 5, true);
-            //streetLayer.ZoomLevelSet.ZoomLevel01.ApplyUntilZoomLevel = ApplyUntilZoomLevel.Level20;
+            ShapeFileFeatureLayer streetLayer = new ShapeFileFeatureLayer(@"../../data/Streets_subset.shp");
+            streetLayer.FeatureSource.Projection = customRotationProjection;
+            streetLayer.ZoomLevelSet.ZoomLevel01.DefaultLineStyle = LineStyles.CreateSimpleLineStyle
+                (GeoColor.StandardColors.Red, 3, GeoColor.FromArgb(255, GeoColor.StandardColors.Black), 5, true);
+            streetLayer.ZoomLevelSet.ZoomLevel01.ApplyUntilZoomLevel = ApplyUntilZoomLevel.Level20;
 
-            //LayerOverlay layerOverlay = new LayerOverlay();
-            //layerOverlay.Layers.Add("StreetLayer", streetLayer);
-            //wpfMap1.Overlays.Add("StreetOverlay", layerOverlay);
+            LayerOverlay layerOverlay = new LayerOverlay();
+            layerOverlay.Layers.Add("StreetLayer", streetLayer);
+            wpfMap1.Overlays.Add("StreetOverlay", layerOverlay);
 
-            ////Sets the pivot point to be the center of the layer.
-            //streetLayer.Open();
-            //customRotationProjection.PivotVertex = new Vertex(streetLayer.GetBoundingBox().GetCenterPoint());
-            //streetLayer.Close();
+            //Sets the pivot point to be the center of the layer.
+            streetLayer.Open();
+            customRotationProjection.PivotVertex = new Vertex(streetLayer.GetBoundingBox().GetCenterPoint());
+            streetLayer.Close();
 
-            //customRotationProjection.Angle = 20;
+            customRotationProjection.Angle = 20;
 
-            //wpfMap1.Refresh();
+            wpfMap1.Refresh();
         }
 
         private void btnRotateClockWise_Click(object sender, RoutedEventArgs e)
